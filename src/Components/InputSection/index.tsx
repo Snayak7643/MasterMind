@@ -9,10 +9,10 @@ const InputSection = () => {
 
   return (
     <div className="input-section">
-      <ColorCirle style={state.styles[0]} />
-      <ColorCirle style={state.styles[1]} />
-      <ColorCirle style={state.styles[2]} />
-      <ColorCirle style={state.styles[3]} />
+      <ColorCirle style={state.styles[0]} handleClick={() => {}} />
+      <ColorCirle style={state.styles[1]} handleClick={() => {}} />
+      <ColorCirle style={state.styles[2]} handleClick={() => {}} />
+      <ColorCirle style={state.styles[3]} handleClick={() => {}} />
       <Button />
       <Output />
     </div>
