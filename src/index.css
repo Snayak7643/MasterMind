@@ -7,6 +7,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .yellow {
   background-color: gold;
 }
@@ -69,11 +76,15 @@ body {
   width: 0.7rem;
   margin: 1px;
 }
+
+.check-icon {
+  font-size: 1.5rem;
+}
 .submit-button {
   background-color: white;
   border: 0px;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .input-section {
   display: flex;
@@ -82,5 +93,5 @@ body {
 }
 
 .selection-box {
-  color: black;
+  margin-bottom: 15px;
 }
