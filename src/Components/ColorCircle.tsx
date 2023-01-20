@@ -1,7 +1,13 @@
 import React from "react";
 
-const ColorCirle = () => {
-  return <button className="color-circle"></button>;
+type PropType = {
+  style: {
+    backgroundColor: string;
+  };
+};
+
+const ColorCirle: React.FunctionComponent<PropType> = ({ style }) => {
+  return <button className="color-circle" style={style}></button>;
 };
 
 export default ColorCirle;

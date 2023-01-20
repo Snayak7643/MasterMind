@@ -8,7 +8,7 @@ body {
 }
 
 .yellow {
-  background-color: orange;
+  background-color: gold;
 }
 .yellowgreen {
   background-color: yellowgreen;
@@ -40,7 +40,7 @@ body {
 }
 .heading h2 {
   font-family: "Times New Roman", Times, serif;
-  padding: 8px;
+  padding: 12px;
 }
 .brain-icon {
   padding: 8px;
@@ -71,8 +71,9 @@ body {
 }
 .submit-button {
   background-color: white;
-  border: 1px solid black;
-  margin: 2px;
+  border: 0px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 .input-section {
   display: flex;

@@ -6,10 +6,10 @@ import Output from "./components/Output";
 const InputSection = () => {
   return (
     <div className="input-section">
-      <ColorCirle />
-      <ColorCirle />
-      <ColorCirle />
-      <ColorCirle />
+      <ColorCirle style={{ backgroundColor: "white" }} />
+      <ColorCirle style={{ backgroundColor: "white" }} />
+      <ColorCirle style={{ backgroundColor: "white" }} />
+      <ColorCirle style={{ backgroundColor: "white" }} />
       <Button />
       <Output />
     </div>
