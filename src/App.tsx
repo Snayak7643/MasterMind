@@ -1,11 +1,11 @@
 import React from "react";
-import ColorCirle from "./Components/ColorCircle";
+import InputSection from "./Components/InputSection";
 
 function App() {
   return (
     <>
       <h1> MasterMind </h1>
-      <ColorCirle />
+      <InputSection />
     </>
   );
 }
