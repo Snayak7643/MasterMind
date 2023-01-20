@@ -7,6 +7,44 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.yellow {
+  background-color: orange;
+}
+.yellowgreen {
+  background-color: yellowgreen;
+}
+.aqua {
+  background-color: aqua;
+}
+.pink {
+  background-color: pink;
+}
+.blue {
+  background-color: royalblue;
+}
+.red {
+  background-color: orangered;
+}
+
+.heading {
+  width: 100vw;
+  text-align: center;
+}
+.heading-wrapper {
+  max-width: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-left: auto;
+  margin-right: auto;
+}
+.heading h2 {
+  font-family: "Times New Roman", Times, serif;
+  padding: 8px;
+}
+.brain-icon {
+  padding: 8px;
+}
 .color-circle {
   border: 1px solid black;
   background-color: white;
