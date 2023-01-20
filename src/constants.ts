@@ -23,3 +23,8 @@ export const INITIAL_STATE: StateType = {
     { backgroundColor: "white" },
   ],
 };
+
+export type ActionType = {
+  type: string;
+  payload: any;
+};
