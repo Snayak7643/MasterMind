@@ -1,4 +1,5 @@
-import { ActionType, COLORS, StateType } from "../constants";
+import { ActionType, StateType } from "../types";
+import { COLORS } from "../constants";
 
 const ans = [3, 5, 3, 3];
 

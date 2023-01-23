@@ -1,3 +1,4 @@
+import { StateType } from "./types";
 import {
   generateOneToN,
   generateOutput,
@@ -23,14 +24,6 @@ const NO_OF_CHANCES: number[] = generateOneToN(constraints.NO_OF_CHANCES);
 
 export { COLORS, GUESSES, NO_OF_CHANCES };
 
-export type StateType = {
-  selectedColor: number;
-  activeIndex: number;
-  styles: { backgroundColor: string }[][];
-  input: number[];
-  output: number[][];
-};
-
 export const INITIAL_STATE: StateType = {
   selectedColor: 0,
   activeIndex: 0,
@@ -41,9 +34,4 @@ export const INITIAL_STATE: StateType = {
     constraints.NO_OF_GUESSES,
     0
   ),
-};
-
-export type ActionType = {
-  type: string;
-  payload: any;
 };

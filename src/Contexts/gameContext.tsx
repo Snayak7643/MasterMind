@@ -1,5 +1,6 @@
 import React, { createContext } from "react";
-import { ActionType, INITIAL_STATE, StateType } from "../constants";
+import { StateType, ActionType } from "../types";
+import { INITIAL_STATE } from "../constants";
 
 const GameContext = createContext<{
   state: StateType;
