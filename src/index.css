@@ -113,3 +113,37 @@ p {
 .empty-button {
   margin: 1.1rem;
 }
+
+/*Modals*/
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: 5;
+  background-color: rgba(37, 107, 212, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-box {
+  padding: 2rem;
+  background-color: white;
+  min-width: 60%;
+  text-align: center;
+}
+.okay {
+  background-color: white;
+  border: 1px solid black;
+  padding: 0.4rem;
+  border-radius: 10%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+  font-weight: bolder;
+  transition: 0.5s;
+}
+.okay:hover {
+  background-color: black;
+  color: white;
+}
