@@ -1,40 +1,6 @@
 import { ActionType, StateType } from "../types";
 import { actionNames, COLORS } from "../constants";
-import { generateAnswer, generateN } from "../Utils/functions";
-
-const getOutput = (input: number[], answer: number[]) => {
-  let output: number[] = [],
-    i: number = 0;
-  for (i = 0; i < input.length; i++) {
-    output.push(-1);
-  }
-  const answerMap = new Map();
-  for (i = 0; i < answer.length; i++) {
-    let f: any = 0;
-    if (answerMap.get(answer[i]) !== undefined) {
-      f = answerMap.get(answer[i]);
-    }
-    answerMap.set(answer[i], f + 1);
-  }
-  i = 0;
-
-  input.forEach((colorIndex) => {
-    if (answerMap.has(colorIndex) && answerMap.get(colorIndex) > 0) {
-      answerMap.set(colorIndex, answerMap.get(colorIndex) - 1);
-      output[i] = 0;
-      i++;
-    }
-  });
-  i = 0;
-  input.forEach((colorIndex, index) => {
-    if (colorIndex === answer[index]) {
-      output[i] = 1;
-      i++;
-    }
-  });
-  console.log(output);
-  return output;
-};
+import { generateAnswer, generateN, getOutput } from "../Utils/functions";
 
 const gameReducer = (state: StateType, action: ActionType) => {
   const { colorIndex, index } = action.payload;
