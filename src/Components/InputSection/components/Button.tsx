@@ -20,7 +20,9 @@ const Button: React.FunctionComponent<PropType> = ({ isActive }) => {
             ? () => {
                 dispatch(submit());
               }
-            : () => {}
+            : () => {
+                alert("Please Fill All the Gusses in that row!!");
+              }
         }
       >
         <FcApproval className="check-icon" />
@@ -28,7 +30,7 @@ const Button: React.FunctionComponent<PropType> = ({ isActive }) => {
     );
   }
 
-  return <div></div>;
+  return <div className="empty-button"></div>;
 };
 
 export default Button;

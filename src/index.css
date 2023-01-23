@@ -63,7 +63,8 @@ main {
   margin: 2px;
 }
 .selected {
-  border: 2px solid black;
+  height: 2rem;
+  width: 2rem;
 }
 .output {
   color: black;
@@ -94,11 +95,14 @@ main {
   display: flex;
   flex-direction: row;
   margin: 2px;
-  opacity: 0.4;
+  opacity: 0.5;
 }
 .selected-input {
   opacity: 1;
   border: 1px solid black;
+  border-radius: 2%;
+  padding: 0.5rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
 }
 
 .selection-box {
@@ -107,4 +111,7 @@ main {
 p {
   text-align: center;
   font-size: 8px;
+}
+.empty-button {
+  margin: 1.1rem;
 }
