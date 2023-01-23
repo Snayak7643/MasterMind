@@ -1,36 +1,32 @@
 import React, { useContext } from "react";
 import { FcApproval } from "react-icons/fc";
 import GameContext from "../../../Contexts/gameContext";
+import { check } from "../../../Utils/functions";
 
 type PropType = {
-  onClick: () => void;
-  index: number;
+  isActive: boolean;
 };
 
-const Button: React.FunctionComponent<PropType> = ({ onClick, index }) => {
-  const { state } = useContext(GameContext);
-  const check: () => boolean = () => {
-    for (var i = 0; i < state.input.length; i++) {
-      if (state.input[i] === 7) {
-        return false;
-      }
-    }
-    return true;
-  };
-  if (state.activeIndex > index) {
+const Button: React.FunctionComponent<PropType> = ({ isActive }) => {
+  const { state, dispatch } = useContext(GameContext);
+
+  if (isActive) {
     return (
-      <button className="submit-button" onClick={() => {}}>
+      <button
+        className="submit-button"
+        onClick={
+          check(state.input)
+            ? () => {
+                dispatch({ type: "submit", payload: {} });
+              }
+            : () => {}
+        }
+      >
         <FcApproval className="check-icon" />
       </button>
     );
   }
-  if (state.activeIndex === index && check()) {
-    return (
-      <button className="submit-button" onClick={onClick}>
-        <FcApproval className="check-icon" />
-      </button>
-    );
-  }
+
   return <div></div>;
 };
 

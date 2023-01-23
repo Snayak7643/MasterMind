@@ -35,3 +35,12 @@ export const generateOutput = (
   }
   return output;
 };
+
+export const check = (input: number[]) => {
+  for (var i = 0; i < input.length; i++) {
+    if (input[i] === 7) {
+      return false;
+    }
+  }
+  return true;
+};

@@ -11,7 +11,7 @@ const constraints = {
   NO_OF_GUESSES: 4,
 };
 
-const COLORS = [
+export const COLORS = [
   "gold",
   "yellowgreen",
   "aqua",
@@ -19,10 +19,10 @@ const COLORS = [
   "royalblue",
   "orangered",
 ];
-const GUESSES: number[] = generateOneToN(constraints.NO_OF_GUESSES);
-const NO_OF_CHANCES: number[] = generateOneToN(constraints.NO_OF_CHANCES);
-
-export { COLORS, GUESSES, NO_OF_CHANCES };
+export const GUESSES: number[] = generateOneToN(constraints.NO_OF_GUESSES);
+export const NO_OF_CHANCES: number[] = generateOneToN(
+  constraints.NO_OF_CHANCES
+);
 
 export const INITIAL_STATE: StateType = {
   selectedColor: 0,

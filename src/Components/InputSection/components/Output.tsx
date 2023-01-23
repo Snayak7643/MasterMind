@@ -9,31 +9,21 @@ type PropType = {
 const Output: React.FunctionComponent<PropType> = ({ index }) => {
   const { state } = useContext(GameContext);
   const output = state.output[index];
-  if (state.activeIndex >= index) {
-    return (
-      <div className="output">
-        <div className="output-row1">
-          {GUESSES.map((no) => {
-            return (
-              <div
-                key={no}
-                className={
-                  output[no] !== 1 ? "output-circle" : "output-circle black"
-                }
-              >
-                <p>{output[no] === -1 ? "X" : ""}</p>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    );
-  }
+
   return (
     <div className="output">
       <div className="output-row1">
         {GUESSES.map((no) => {
-          return <div key={no} className="output-circle "></div>;
+          return (
+            <div
+              key={no}
+              className={
+                output[no] !== 1 ? "output-circle" : "output-circle black"
+              }
+            >
+              <p>{output[no] === -1 ? "X" : ""}</p>
+            </div>
+          );
         })}
       </div>
     </div>

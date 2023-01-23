@@ -16,10 +16,6 @@ const InputSection: React.FunctionComponent<PropType> = ({ index }) => {
     dispatch({ type: "setColor", payload: { index: ind } });
   };
 
-  const submit = () => {
-    dispatch({ type: "submit", payload: {} });
-  };
-
   return (
     <div
       className={
@@ -39,7 +35,7 @@ const InputSection: React.FunctionComponent<PropType> = ({ index }) => {
         );
       })}
 
-      <Button onClick={submit} index={index} />
+      <Button isActive={state.activeIndex === index} />
       <Output index={index} />
     </div>
   );
