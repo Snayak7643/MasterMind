@@ -1,3 +1,9 @@
+import {
+  generateOneToN,
+  generateOutput,
+  generateStyles,
+} from "./Utils/functions";
+
 const constraints = {
   NO_OF_COLORS: 6,
   NO_OF_CHANCES: 10,
@@ -12,38 +18,10 @@ const COLORS = [
   "royalblue",
   "orangered",
 ];
-
-const GUESSES: number[] = [];
-for (var i = 0; i < constraints.NO_OF_GUESSES; i++) {
-  GUESSES.push(i);
-}
-
-const NO_OF_CHANCES: number[] = [];
-for (i = 0; i < constraints.NO_OF_CHANCES; i++) {
-  NO_OF_CHANCES.push(i);
-}
+const GUESSES: number[] = generateOneToN(constraints.NO_OF_GUESSES);
+const NO_OF_CHANCES: number[] = generateOneToN(constraints.NO_OF_CHANCES);
 
 export { COLORS, GUESSES, NO_OF_CHANCES };
-
-const styles: { backgroundColor: string }[][] = [];
-const output: number[][] = [];
-
-for (i = 0; i < constraints.NO_OF_CHANCES; i++) {
-  const style: { backgroundColor: string }[] = [];
-  const output_row: number[] = [];
-  for (var j = 0; j < constraints.NO_OF_GUESSES; j++) {
-    style.push({ backgroundColor: "white" });
-    output_row.push(0);
-  }
-  styles.push(style);
-  output.push(output_row);
-}
-
-const input: number[] = [];
-
-for (i = 0; i < constraints.NO_OF_GUESSES; i++) {
-  input.push(7);
-}
 
 export type StateType = {
   selectedColor: number;
@@ -56,9 +34,13 @@ export type StateType = {
 export const INITIAL_STATE: StateType = {
   selectedColor: 0,
   activeIndex: 0,
-  styles: styles,
-  input: input,
-  output: output,
+  styles: generateStyles(constraints.NO_OF_CHANCES, constraints.NO_OF_GUESSES),
+  input: Array(constraints.NO_OF_GUESSES).fill(7),
+  output: generateOutput(
+    constraints.NO_OF_CHANCES,
+    constraints.NO_OF_GUESSES,
+    0
+  ),
 };
 
 export type ActionType = {
