@@ -1,3 +1,5 @@
+import { constraints } from "../constants";
+
 export const generateN = (size: number, value: number) => {
   const array = Array(size).fill(value);
   return array;
@@ -48,4 +50,14 @@ export const check = (input: number[]) => {
     }
   }
   return true;
+};
+
+export const generateAnswer = (size: number) => {
+  const answer: number[] = [];
+  for (var i = 0; i < size; i++) {
+    const no = Math.floor((Math.random() * 101) % constraints.NO_OF_COLORS);
+    answer.push(no);
+  }
+  console.log("answer:", answer);
+  return answer;
 };

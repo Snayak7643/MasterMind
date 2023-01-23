@@ -1,22 +1,20 @@
 import { ActionType, StateType } from "../types";
 import { actionNames, COLORS } from "../constants";
-import { generateN } from "../Utils/functions";
+import { generateAnswer, generateN } from "../Utils/functions";
 
-const ans = [3, 5, 3, 3];
-
-const checkResult = (input: number[]) => {
+const getOutput = (input: number[], answer: number[]) => {
   let output: number[] = [],
     i: number = 0;
   for (i = 0; i < input.length; i++) {
     output.push(-1);
   }
   const answerMap = new Map();
-  for (i = 0; i < ans.length; i++) {
+  for (i = 0; i < answer.length; i++) {
     let f: any = 0;
-    if (answerMap.get(ans[i]) !== undefined) {
-      f = answerMap.get(ans[i]);
+    if (answerMap.get(answer[i]) !== undefined) {
+      f = answerMap.get(answer[i]);
     }
-    answerMap.set(ans[i], f + 1);
+    answerMap.set(answer[i], f + 1);
   }
   i = 0;
 
@@ -29,7 +27,7 @@ const checkResult = (input: number[]) => {
   });
   i = 0;
   input.forEach((colorIndex, index) => {
-    if (colorIndex === ans[index]) {
+    if (colorIndex === answer[index]) {
       output[i] = 1;
       i++;
     }
@@ -42,8 +40,14 @@ const gameReducer = (state: StateType, action: ActionType) => {
   const { colorIndex, index } = action.payload;
   const { activeIndex, styles, input, selectedColor, output } = state;
 
-  console.log(state);
   switch (action.type) {
+    case actionNames.NEW_GAME: {
+      return {
+        ...state,
+        answer: generateAnswer(input.length),
+      };
+    }
+
     case actionNames.SELECT_COLOR: {
       return {
         ...state,
@@ -67,7 +71,7 @@ const gameReducer = (state: StateType, action: ActionType) => {
 
     case actionNames.SUBMIT: {
       const newOutput = output;
-      newOutput[activeIndex] = checkResult(input);
+      newOutput[activeIndex] = getOutput(input, state.answer);
       return {
         ...state,
         activeIndex: activeIndex + 1,

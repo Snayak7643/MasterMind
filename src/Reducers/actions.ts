@@ -1,5 +1,9 @@
 import { actionNames } from "../constants";
 
+export const newGame = () => {
+  return { type: actionNames.NEW_GAME, payload: {} };
+};
+
 export const selectColor = (colorIndex: number) => {
   return { type: actionNames.SELECT_COLOR, payload: { colorIndex } };
 };

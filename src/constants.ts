@@ -6,7 +6,7 @@ import {
   generateStyles,
 } from "./Utils/functions";
 
-const constraints = {
+export const constraints = {
   NO_OF_COLORS: 6,
   NO_OF_CHANCES: 10,
   NO_OF_GUESSES: 4,
@@ -30,6 +30,7 @@ export const INITIAL_STATE: StateType = {
   activeIndex: 0,
   styles: generateStyles(constraints.NO_OF_CHANCES, constraints.NO_OF_GUESSES),
   input: generateN(constraints.NO_OF_GUESSES, 7),
+  answer: [],
   output: generateOutput(
     constraints.NO_OF_CHANCES,
     constraints.NO_OF_GUESSES,
@@ -38,6 +39,7 @@ export const INITIAL_STATE: StateType = {
 };
 
 export const actionNames = {
+  NEW_GAME: "newGame",
   SELECT_COLOR: "selectColor",
   SET_COLOR: "setColor",
   SUBMIT: "submit",
