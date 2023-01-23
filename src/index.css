@@ -75,11 +75,9 @@ main {
   margin: 1px;
 }
 .output-circle {
-  border: 1px solid black;
-  border-radius: 50%;
   height: 0.7rem;
   width: 0.7rem;
-  margin: 1px;
+  margin: 0.2rem;
 }
 
 .check-icon {

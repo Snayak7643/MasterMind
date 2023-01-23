@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { GUESSES } from "../../../constants";
 import GameContext from "../../../Contexts/gameContext";
+import { BsCircleFill, BsXCircle, BsCircle } from "react-icons/bs";
 
 type PropType = {
   index: number;
@@ -15,13 +16,14 @@ const Output: React.FunctionComponent<PropType> = ({ index }) => {
       <div className="output-row1">
         {GUESSES.map((guessNo) => {
           return (
-            <div
-              key={guessNo}
-              className={
-                output[guessNo] !== 1 ? "output-circle" : "output-circle black"
-              }
-            >
-              <p>{output[guessNo] === -1 ? "X" : ""}</p>
+            <div key={guessNo} className="output-circle">
+              {output[guessNo] === 1 ? (
+                <BsCircleFill />
+              ) : output[guessNo] === -1 ? (
+                <BsXCircle />
+              ) : (
+                <BsCircle />
+              )}
             </div>
           );
         })}
