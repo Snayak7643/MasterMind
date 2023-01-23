@@ -1,3 +1,8 @@
+export const generateN = (size: number, value: number) => {
+  const array = Array(size).fill(value);
+  return array;
+};
+
 export const generateOneToN = (size: number) => {
   const array: number[] = [];
   for (var i = 0; i < size; i++) {

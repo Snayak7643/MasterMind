@@ -13,15 +13,15 @@ const Output: React.FunctionComponent<PropType> = ({ index }) => {
   return (
     <div className="output">
       <div className="output-row1">
-        {GUESSES.map((no) => {
+        {GUESSES.map((guessNo) => {
           return (
             <div
-              key={no}
+              key={guessNo}
               className={
-                output[no] !== 1 ? "output-circle" : "output-circle black"
+                output[guessNo] !== 1 ? "output-circle" : "output-circle black"
               }
             >
-              <p>{output[no] === -1 ? "X" : ""}</p>
+              <p>{output[guessNo] === -1 ? "X" : ""}</p>
             </div>
           );
         })}

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { GUESSES } from "../../constants";
 import GameContext from "../../Contexts/gameContext";
+import { setColor } from "../../Reducers/actions";
 import ColorCirle from "../ColorCircle";
 import Button from "./components/Button";
 import Output from "./components/Output";
@@ -12,10 +13,6 @@ type PropType = {
 const InputSection: React.FunctionComponent<PropType> = ({ index }) => {
   const { state, dispatch } = useContext(GameContext);
 
-  const setColor = (ind: number) => {
-    dispatch({ type: "setColor", payload: { index: ind } });
-  };
-
   return (
     <div
       className={
@@ -24,12 +21,12 @@ const InputSection: React.FunctionComponent<PropType> = ({ index }) => {
           : "input-section"
       }
     >
-      {GUESSES.map((no) => {
+      {GUESSES.map((guessNo) => {
         return (
           <ColorCirle
-            key={no}
-            style={state.styles[index][no]}
-            handleClick={() => setColor(no)}
+            key={guessNo}
+            style={state.styles[index][guessNo]}
+            handleClick={() => dispatch(setColor(guessNo))}
             isActive={state.activeIndex === index}
           />
         );

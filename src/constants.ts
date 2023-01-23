@@ -1,5 +1,6 @@
 import { StateType } from "./types";
 import {
+  generateN,
   generateOneToN,
   generateOutput,
   generateStyles,
@@ -28,10 +29,16 @@ export const INITIAL_STATE: StateType = {
   selectedColor: 0,
   activeIndex: 0,
   styles: generateStyles(constraints.NO_OF_CHANCES, constraints.NO_OF_GUESSES),
-  input: Array(constraints.NO_OF_GUESSES).fill(7),
+  input: generateN(constraints.NO_OF_GUESSES, 7),
   output: generateOutput(
     constraints.NO_OF_CHANCES,
     constraints.NO_OF_GUESSES,
     0
   ),
+};
+
+export const actionNames = {
+  SELECT_COLOR: "selectColor",
+  SET_COLOR: "setColor",
+  SUBMIT: "submit",
 };

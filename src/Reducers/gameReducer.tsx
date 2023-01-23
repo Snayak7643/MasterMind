@@ -1,5 +1,6 @@
 import { ActionType, StateType } from "../types";
-import { COLORS } from "../constants";
+import { actionNames, COLORS } from "../constants";
+import { generateN } from "../Utils/functions";
 
 const ans = [3, 5, 3, 3];
 
@@ -38,38 +39,43 @@ const checkResult = (input: number[]) => {
 };
 
 const gameReducer = (state: StateType, action: ActionType) => {
+  const { colorIndex, index } = action.payload;
+  const { activeIndex, styles, input, selectedColor, output } = state;
+
   console.log(state);
   switch (action.type) {
-    case "selectColor": {
+    case actionNames.SELECT_COLOR: {
       return {
         ...state,
-        selectedColor: action.payload.colorIndex,
+        selectedColor: colorIndex,
       };
     }
 
-    case "setColor": {
-      let newStyles = state.styles;
-      newStyles[state.activeIndex][action.payload.index] = {
-        backgroundColor: COLORS[state.selectedColor],
+    case actionNames.SET_COLOR: {
+      let newStyles = styles;
+      newStyles[activeIndex][index] = {
+        backgroundColor: COLORS[selectedColor],
       };
-      let newInput = state.input;
-      newInput[action.payload.index] = state.selectedColor;
+      let newInput = input;
+      newInput[index] = selectedColor;
       return {
         ...state,
         styles: newStyles,
         input: newInput,
       };
     }
-    case "submit": {
-      const newOutput = state.output;
-      newOutput[state.activeIndex] = checkResult(state.input);
+
+    case actionNames.SUBMIT: {
+      const newOutput = output;
+      newOutput[activeIndex] = checkResult(input);
       return {
         ...state,
-        activeIndex: state.activeIndex + 1,
-        input: [7, 7, 7, 7],
+        activeIndex: activeIndex + 1,
+        input: generateN(input.length, 7),
         output: newOutput,
       };
     }
+
     default: {
       return state;
     }

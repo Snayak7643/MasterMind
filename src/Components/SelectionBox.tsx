@@ -1,28 +1,25 @@
 import React, { useContext } from "react";
 import { COLORS } from "../constants";
 import GameContext from "../Contexts/gameContext";
+import { selectColor } from "../Reducers/actions";
 import ColorCirle from "./ColorCircle";
 
 const SelectionBox = () => {
   const { state, dispatch } = useContext(GameContext);
 
-  const setColor = (colorIndex: number) => {
-    dispatch({ type: "selectColor", payload: { colorIndex } });
-  };
-
   return (
     <div className="selection-box">
-      {COLORS.map((color, i) => {
+      {COLORS.map((color, colorIndex) => {
         return (
           <ColorCirle
             key={color}
             style={
-              i === state.selectedColor
+              colorIndex === state.selectedColor
                 ? { backgroundColor: color, border: "2px solid black" }
                 : { backgroundColor: color }
             }
             handleClick={() => {
-              setColor(i);
+              dispatch(selectColor(colorIndex));
             }}
             isActive={true}
           />

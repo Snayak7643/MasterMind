@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { FcApproval } from "react-icons/fc";
 import GameContext from "../../../Contexts/gameContext";
+import { submit } from "../../../Reducers/actions";
 import { check } from "../../../Utils/functions";
 
 type PropType = {
@@ -17,7 +18,7 @@ const Button: React.FunctionComponent<PropType> = ({ isActive }) => {
         onClick={
           check(state.input)
             ? () => {
-                dispatch({ type: "submit", payload: {} });
+                dispatch(submit());
               }
             : () => {}
         }
