@@ -19,8 +19,8 @@ function App() {
       <main>
         <Heading />
         <SelectionBox />
-        {NO_OF_CHANCES.map((no) => {
-          return <InputSection key={no} index={no} />;
+        {NO_OF_CHANCES.map((index) => {
+          return <InputSection key={index} index={index} />;
         })}
       </main>
     </GameContext.Provider>

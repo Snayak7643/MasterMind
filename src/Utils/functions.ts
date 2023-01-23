@@ -63,11 +63,8 @@ export const generateAnswer = (size: number) => {
 };
 
 export const getOutput = (input: number[], answer: number[]) => {
-  let output: number[] = [],
-    i: number = 0;
-  for (i = 0; i < input.length; i++) {
-    output.push(-1);
-  }
+  let output: number[] = generateN(input.length, -1);
+  let i: number = 0;
   const answerMap = new Map();
   for (i = 0; i < answer.length; i++) {
     let f: any = 0;
