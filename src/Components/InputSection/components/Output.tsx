@@ -1,15 +1,40 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GUESSES } from "../../../constants";
+import GameContext from "../../../Contexts/gameContext";
 
-const Output = () => {
+type PropType = {
+  index: number;
+};
+
+const Output: React.FunctionComponent<PropType> = ({ index }) => {
+  const { state } = useContext(GameContext);
+  const output = state.output[index];
+  if (state.activeIndex >= index) {
+    return (
+      <div className="output">
+        <div className="output-row1">
+          {GUESSES.map((no) => {
+            return (
+              <div
+                key={no}
+                className={
+                  output[no] !== 1 ? "output-circle" : "output-circle black"
+                }
+              >
+                <p>{output[no] === -1 ? "X" : ""}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="output">
       <div className="output-row1">
-        <div className="output-circle"></div>
-        <div className="output-circle"></div>
-      </div>
-      <div className="output-row2">
-        <div className="output-circle"></div>
-        <div className="output-circle"></div>
+        {GUESSES.map((no) => {
+          return <div key={no} className="output-circle "></div>;
+        })}
       </div>
     </div>
   );

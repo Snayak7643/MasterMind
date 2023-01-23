@@ -1,22 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import { COLORS } from "../constants";
+import GameContext from "../Contexts/gameContext";
 import ColorCirle from "./ColorCircle";
 
 const SelectionBox = () => {
+  const { state, dispatch } = useContext(GameContext);
+
   const setColor = (colorIndex: number) => {
-    console.log(colorIndex);
+    dispatch({ type: "selectColor", payload: { colorIndex } });
   };
 
   return (
     <div className="selection-box">
-      {[0, 1, 2, 3, 4, 5].map((no) => {
+      {COLORS.map((color, i) => {
         return (
           <ColorCirle
-            key={no}
-            style={{ backgroundColor: COLORS[no] }}
+            key={color}
+            style={
+              i === state.selectedColor
+                ? { backgroundColor: color, border: "2px solid black" }
+                : { backgroundColor: color }
+            }
             handleClick={() => {
-              setColor(no);
+              setColor(i);
             }}
+            isActive={true}
           />
         );
       })}

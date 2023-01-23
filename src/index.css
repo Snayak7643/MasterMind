@@ -13,7 +13,9 @@ main {
   justify-content: center;
   align-items: center;
 }
-
+.black {
+  background-color: black;
+}
 .yellow {
   background-color: gold;
 }
@@ -60,13 +62,15 @@ main {
   width: 2rem;
   margin: 2px;
 }
+.selected {
+  border: 2px solid black;
+}
 .output {
   color: black;
 }
-.output-row1,
-.output-row2 {
-  display: flex;
-  flex-direction: row;
+.output-row1 {
+  display: grid;
+  grid-template-columns: 50% 50%;
   margin: 1px;
 }
 .output-circle {
@@ -90,8 +94,17 @@ main {
   display: flex;
   flex-direction: row;
   margin: 2px;
+  opacity: 0.4;
+}
+.selected-input {
+  opacity: 1;
+  border: 1px solid black;
 }
 
 .selection-box {
   margin-bottom: 15px;
+}
+p {
+  text-align: center;
+  font-size: 8px;
 }
