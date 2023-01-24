@@ -5,7 +5,10 @@ import {
   generateN,
   getOutput,
   getResult,
+  generateStyles,
+  generateOutput,
 } from "../Utils/functions";
+import { constraints } from "../constants";
 
 const gameReducer = (state: StateType, action: ActionType) => {
   const { colorIndex, index } = action.payload;
@@ -15,7 +18,21 @@ const gameReducer = (state: StateType, action: ActionType) => {
     case actionNames.NEW_GAME: {
       return {
         ...state,
+        selectedColor: 0,
+        activeIndex: 0,
+        styles: generateStyles(
+          constraints.NO_OF_CHANCES,
+          constraints.NO_OF_GUESSES
+        ),
+        input: generateN(constraints.NO_OF_GUESSES, 7),
         answer: generateAnswer(input.length),
+        output: generateOutput(
+          constraints.NO_OF_CHANCES,
+          constraints.NO_OF_GUESSES,
+          0
+        ),
+        isWinner: false,
+        isOver: false,
       };
     }
 
