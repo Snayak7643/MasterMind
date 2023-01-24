@@ -9,7 +9,7 @@ const Modal = () => {
     return <></>;
   }
   return (
-    <div className="overlay">
+    <div className={isWinner ? "overlay green" : "overlay orange"}>
       <div className="overlay-box">
         <h3>{isWinner ? "Congratulations!! You Won" : "Game Over!!"}</h3>
         <button

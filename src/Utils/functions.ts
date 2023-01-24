@@ -89,7 +89,6 @@ export const getOutput = (input: number[], answer: number[]) => {
       i++;
     }
   });
-  console.log(output);
   return output;
 };
 
