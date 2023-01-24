@@ -1,5 +1,6 @@
 import React, { useReducer, useEffect } from "react";
 import Heading from "./Components/Heading";
+import Hints from "./Components/Hints";
 import InputSection from "./Components/InputSection";
 import Modal from "./Components/Modal";
 import SelectionBox from "./Components/SelectionBox";
@@ -20,6 +21,7 @@ function App() {
       <main>
         <Modal />
         <Heading />
+        <Hints />
         <SelectionBox />
         {NO_OF_CHANCES.map((index) => {
           return <InputSection key={index} index={index} />;

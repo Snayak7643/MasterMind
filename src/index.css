@@ -7,7 +7,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
 main {
+  margin: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,7 +63,7 @@ main {
   padding: 8px;
 }
 .color-circle {
-  border: 1px solid black;
+  border: 1px solid rgba(157, 153, 153, 0.8);
   background-color: white;
   border-radius: 50%;
   height: 2rem;
@@ -106,10 +114,7 @@ main {
 .selection-box {
   margin-bottom: 15px;
 }
-p {
-  text-align: center;
-  font-size: 8px;
-}
+
 .empty-button {
   margin: 1.1rem;
 }
@@ -146,4 +151,16 @@ p {
 .okay:hover {
   background-color: black;
   color: white;
+}
+
+/* HINTS */
+.hints {
+  max-width: 60%;
+  border: 1px solid rgba(157, 153, 153, 0.6);
+  padding: 1rem;
+  margin: 1rem;
+}
+.hints h4 {
+  cursor: pointer;
+  text-align: center;
 }

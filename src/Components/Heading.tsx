@@ -1,5 +1,4 @@
 import React from "react";
-import { GiBrain } from "react-icons/gi";
 
 const Heading = () => {
   return (
@@ -11,9 +10,7 @@ const Heading = () => {
         <h2 className="aqua">T</h2>
         <h2 className="red">E</h2>
         <h2 className="blue">R</h2>
-        <h1 className="brain-icon">
-          <GiBrain />
-        </h1>
+        <h2>MIND</h2>
       </div>
     </div>
   );
