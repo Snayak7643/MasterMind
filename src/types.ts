@@ -5,6 +5,8 @@ export type StateType = {
   answer: number[];
   input: number[];
   output: number[][];
+  isWinner: boolean;
+  isOver: boolean;
 };
 
 export type ActionType = {

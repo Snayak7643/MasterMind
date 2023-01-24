@@ -92,3 +92,17 @@ export const getOutput = (input: number[], answer: number[]) => {
   console.log(output);
   return output;
 };
+
+export const getResult = (output: number[], chance: number) => {
+  let isWinner: boolean = true,
+    isOver: boolean = false;
+  output.forEach((element) => {
+    if (element !== 1) {
+      isWinner = false;
+    }
+  });
+  if (isWinner !== true && chance === constraints.NO_OF_CHANCES - 1) {
+    isOver = true;
+  }
+  return { isWinner, isOver };
+};

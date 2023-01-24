@@ -1,6 +1,11 @@
 import { ActionType, StateType } from "../types";
 import { actionNames, COLORS } from "../constants";
-import { generateAnswer, generateN, getOutput } from "../Utils/functions";
+import {
+  generateAnswer,
+  generateN,
+  getOutput,
+  getResult,
+} from "../Utils/functions";
 
 const gameReducer = (state: StateType, action: ActionType) => {
   const { colorIndex, index } = action.payload;
@@ -38,11 +43,17 @@ const gameReducer = (state: StateType, action: ActionType) => {
     case actionNames.SUBMIT: {
       const newOutput = output;
       newOutput[activeIndex] = getOutput(input, state.answer);
+      const { isWinner, isOver } = getResult(
+        newOutput[activeIndex],
+        activeIndex
+      );
       return {
         ...state,
         activeIndex: activeIndex + 1,
         input: generateN(input.length, 7),
         output: newOutput,
+        isWinner,
+        isOver,
       };
     }
 

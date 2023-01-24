@@ -36,6 +36,8 @@ export const INITIAL_STATE: StateType = {
     constraints.NO_OF_GUESSES,
     0
   ),
+  isWinner: false,
+  isOver: false,
 };
 
 export const actionNames = {

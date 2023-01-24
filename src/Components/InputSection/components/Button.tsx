@@ -11,19 +11,13 @@ type PropType = {
 const Button: React.FunctionComponent<PropType> = ({ isActive }) => {
   const { state, dispatch } = useContext(GameContext);
 
-  if (isActive) {
+  if (isActive && check(state.input)) {
     return (
       <button
         className="submit-button"
-        onClick={
-          check(state.input)
-            ? () => {
-                dispatch(submit());
-              }
-            : () => {
-                alert("Please Fill All the Gusses in that row!!");
-              }
-        }
+        onClick={() => {
+          dispatch(submit());
+        }}
       >
         <FcApproval className="check-icon" />
       </button>
