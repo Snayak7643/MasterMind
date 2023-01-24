@@ -1,4 +1,5 @@
 import React, { useReducer, useEffect } from "react";
+import Footer from "./Components/Footer";
 import Heading from "./Components/Heading";
 import Hints from "./Components/Hints";
 import InputSection from "./Components/InputSection";
@@ -23,10 +24,13 @@ function App() {
         <Heading />
         <Hints />
         <SelectionBox />
-        {NO_OF_CHANCES.map((index) => {
-          return <InputSection key={index} index={index} />;
-        })}
+        <div className="contents">
+          {NO_OF_CHANCES.map((index) => {
+            return <InputSection key={index} index={index} />;
+          })}
+        </div>
       </main>
+      <Footer />
     </GameContext.Provider>
   );
 }
