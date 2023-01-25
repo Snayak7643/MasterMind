@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { FcApproval } from "react-icons/fc";
 import GameContext from "../../../Contexts/gameContext";
 import { submit } from "../../../Reducers/actions";
-import { check } from "../../../Utils/functions";
+import { checkButtonVisibility } from "../../../Utils/functions";
 
 type PropType = {
   isActive: boolean;
@@ -11,7 +11,7 @@ type PropType = {
 const Button: React.FunctionComponent<PropType> = ({ isActive }) => {
   const { state, dispatch } = useContext(GameContext);
 
-  if (isActive && check(state.input)) {
+  if (isActive && checkButtonVisibility(state.input)) {
     return (
       <button
         className="submit-button"

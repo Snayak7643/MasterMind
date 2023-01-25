@@ -1,22 +1,15 @@
 import { ActionType, StateType } from "../types";
-import {
-  actionNames,
-  COLORS,
-  INITIAL_STATE,
-  SELECTED_COLOR,
-} from "../constants";
+import { actionNames, COLORS, INITIAL_STATE } from "../constants";
 import { cloneDeep } from "lodash";
 import {
   generateAnswer,
-  generateN,
-  getOutput,
-  getResult,
+  matchGuessWithAnswer,
+  checkWinnerOrOver,
 } from "../Utils/functions";
 
 const gameReducer = (state: StateType, action: ActionType) => {
   const { colorIndex, index } = action.payload;
   const { activeIndex, styles, input, selectedColor, output } = state;
-  console.log(state.input);
   switch (action.type) {
     case actionNames.NEW_GAME: {
       return {
@@ -48,15 +41,15 @@ const gameReducer = (state: StateType, action: ActionType) => {
 
     case actionNames.SUBMIT: {
       const newOutput = cloneDeep(output);
-      newOutput[activeIndex] = getOutput(input, state.answer);
-      const { isWinner, isOver } = getResult(
+      newOutput[activeIndex] = matchGuessWithAnswer(input, state.answer);
+      const { isWinner, isOver } = checkWinnerOrOver(
         newOutput[activeIndex],
         activeIndex
       );
       return {
         ...state,
         activeIndex: activeIndex + 1,
-        input: generateN(input.length, SELECTED_COLOR.WHITE),
+        input: INITIAL_STATE.input,
         output: newOutput,
         isWinner,
         isOver,

@@ -1,7 +1,7 @@
 import { StateType } from "./types";
 import {
-  generateN,
-  generateOneToN,
+  fillArrayWithGivenValue,
+  fillArrayFromZeroToN,
   generateOutput,
   generateStyles,
 } from "./Utils/functions";
@@ -37,8 +37,10 @@ export enum MATCH {
   FULL,
 }
 
-export const GUESSES: number[] = generateOneToN(constraints.NO_OF_GUESSES);
-export const NO_OF_CHANCES: number[] = generateOneToN(
+export const GUESSES: number[] = fillArrayFromZeroToN(
+  constraints.NO_OF_GUESSES
+);
+export const NO_OF_CHANCES: number[] = fillArrayFromZeroToN(
   constraints.NO_OF_CHANCES
 );
 
@@ -46,7 +48,10 @@ export const INITIAL_STATE: StateType = {
   selectedColor: SELECTED_COLOR.YELLOW,
   activeIndex: 0,
   styles: generateStyles(constraints.NO_OF_CHANCES, constraints.NO_OF_GUESSES),
-  input: generateN(constraints.NO_OF_GUESSES, SELECTED_COLOR.WHITE),
+  input: fillArrayWithGivenValue(
+    constraints.NO_OF_GUESSES,
+    SELECTED_COLOR.WHITE
+  ),
   answer: [],
   output: generateOutput(
     constraints.NO_OF_CHANCES,
