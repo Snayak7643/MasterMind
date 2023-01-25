@@ -11,17 +11,13 @@ const ColorCirle: React.FunctionComponent<PropType> = ({
   handleClick,
   isActive,
 }) => {
-  if (isActive) {
-    return (
-      <button
-        className="color-circle"
-        style={style}
-        onClick={handleClick}
-      ></button>
-    );
-  }
   return (
-    <button className="color-circle" style={style} onClick={() => {}}></button>
+    <button
+      className="color-circle"
+      style={style}
+      onClick={handleClick}
+      disabled={!isActive}
+    ></button>
   );
 };
 
