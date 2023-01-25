@@ -1,14 +1,12 @@
 import { ActionType, StateType } from "../types";
-import { actionNames, COLORS } from "../constants";
+import { actionNames, COLORS, INITIAL_STATE } from "../constants";
+import { cloneDeep } from "lodash";
 import {
   generateAnswer,
   generateN,
   getOutput,
   getResult,
-  generateStyles,
-  generateOutput,
 } from "../Utils/functions";
-import { constraints } from "../constants";
 
 const gameReducer = (state: StateType, action: ActionType) => {
   const { colorIndex, index } = action.payload;
@@ -17,22 +15,8 @@ const gameReducer = (state: StateType, action: ActionType) => {
   switch (action.type) {
     case actionNames.NEW_GAME: {
       return {
-        ...state,
-        selectedColor: 0,
-        activeIndex: 0,
-        styles: generateStyles(
-          constraints.NO_OF_CHANCES,
-          constraints.NO_OF_GUESSES
-        ),
-        input: generateN(constraints.NO_OF_GUESSES, 7),
+        ...INITIAL_STATE,
         answer: generateAnswer(input.length),
-        output: generateOutput(
-          constraints.NO_OF_CHANCES,
-          constraints.NO_OF_GUESSES,
-          0
-        ),
-        isWinner: false,
-        isOver: false,
       };
     }
 
@@ -44,11 +28,11 @@ const gameReducer = (state: StateType, action: ActionType) => {
     }
 
     case actionNames.SET_COLOR: {
-      let newStyles = styles;
+      let newStyles = cloneDeep(styles);
       newStyles[activeIndex][index] = {
         backgroundColor: COLORS[selectedColor],
       };
-      let newInput = input;
+      let newInput = [...input];
       newInput[index] = selectedColor;
       return {
         ...state,
@@ -58,7 +42,7 @@ const gameReducer = (state: StateType, action: ActionType) => {
     }
 
     case actionNames.SUBMIT: {
-      const newOutput = output;
+      const newOutput = cloneDeep(output);
       newOutput[activeIndex] = getOutput(input, state.answer);
       const { isWinner, isOver } = getResult(
         newOutput[activeIndex],
