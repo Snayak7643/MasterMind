@@ -21,6 +21,16 @@ export const COLORS = [
   "orangered",
 ];
 
+export enum SELECTED_COLOR {
+  YELLOW,
+  GREEN,
+  LIGHT_BLUE,
+  PINK,
+  BLUE,
+  RED,
+  WHITE = 100,
+}
+
 export enum MATCH {
   NO = -1,
   PARTIAL,
@@ -33,10 +43,10 @@ export const NO_OF_CHANCES: number[] = generateOneToN(
 );
 
 export const INITIAL_STATE: StateType = {
-  selectedColor: 0,
+  selectedColor: SELECTED_COLOR.YELLOW,
   activeIndex: 0,
   styles: generateStyles(constraints.NO_OF_CHANCES, constraints.NO_OF_GUESSES),
-  input: generateN(constraints.NO_OF_GUESSES, 7),
+  input: generateN(constraints.NO_OF_GUESSES, SELECTED_COLOR.WHITE),
   answer: [],
   output: generateOutput(
     constraints.NO_OF_CHANCES,

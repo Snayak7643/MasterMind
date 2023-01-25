@@ -1,4 +1,4 @@
-import { constraints, MATCH } from "../constants";
+import { constraints, MATCH, SELECTED_COLOR } from "../constants";
 
 export const generateN = (size: number, value: number) => {
   const array = Array(size).fill(value);
@@ -45,7 +45,7 @@ export const generateOutput = (
 
 export const check = (input: number[]) => {
   for (var i = 0; i < input.length; i++) {
-    if (input[i] === 7) {
+    if (input[i] === SELECTED_COLOR.WHITE) {
       return false;
     }
   }

@@ -1,5 +1,10 @@
 import { ActionType, StateType } from "../types";
-import { actionNames, COLORS, INITIAL_STATE } from "../constants";
+import {
+  actionNames,
+  COLORS,
+  INITIAL_STATE,
+  SELECTED_COLOR,
+} from "../constants";
 import { cloneDeep } from "lodash";
 import {
   generateAnswer,
@@ -11,7 +16,7 @@ import {
 const gameReducer = (state: StateType, action: ActionType) => {
   const { colorIndex, index } = action.payload;
   const { activeIndex, styles, input, selectedColor, output } = state;
-
+  console.log(state.input);
   switch (action.type) {
     case actionNames.NEW_GAME: {
       return {
@@ -51,7 +56,7 @@ const gameReducer = (state: StateType, action: ActionType) => {
       return {
         ...state,
         activeIndex: activeIndex + 1,
-        input: generateN(input.length, 7),
+        input: generateN(input.length, SELECTED_COLOR.WHITE),
         output: newOutput,
         isWinner,
         isOver,
