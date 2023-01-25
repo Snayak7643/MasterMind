@@ -3,19 +3,19 @@ import { BsCircleFill, BsXCircle, BsCircle } from "react-icons/bs";
 import { constraints } from "../constants";
 
 const Hints = () => {
-  const [show, setShow] = useState<boolean>(false);
+  const [isVisible, setVisible] = useState<boolean>(false);
 
   return (
     <>
       <div className="hints">
         <h4
           onClick={() => {
-            setShow((show) => !show);
+            setVisible((prev) => !prev);
           }}
         >
-          {show ? "Hide" : "Show"} Hints
+          {isVisible ? "Hide" : "Show"} Hints
         </h4>
-        {show ? (
+        {isVisible ? (
           <p>
             Try to guess the pattern, in both order and color, within{" "}
             {constraints.NO_OF_CHANCES} turns. After submitting a row,
