@@ -7,7 +7,7 @@ export const fillArrayWithGivenValue = (size: number, value: number) => {
 
 export const fillArrayFromZeroToN = (size: number) => {
   const array: number[] = [];
-  for (var i = 0; i < size; i++) {
+  for (let i = 0; i < size; i++) {
     array.push(i);
   }
   return array;
@@ -16,9 +16,9 @@ export const fillArrayFromZeroToN = (size: number) => {
 export const generateStyles = (rows: number, columns: number) => {
   const styles: { backgroundColor: string }[][] = [];
 
-  for (var i = 0; i < rows; i++) {
+  for (let i = 0; i < rows; i++) {
     const style: { backgroundColor: string }[] = [];
-    for (var j = 0; j < columns; j++) {
+    for (let j = 0; j < columns; j++) {
       style.push({ backgroundColor: COLORS[SELECTED_COLOR.WHITE] });
     }
     styles.push(style);
@@ -33,9 +33,9 @@ export const generateOutput = (
   value: number
 ) => {
   const output: number[][] = [];
-  for (var i = 0; i < rows; i++) {
+  for (let i = 0; i < rows; i++) {
     const output_row: number[] = [];
-    for (var j = 0; j < columns; j++) {
+    for (let j = 0; j < columns; j++) {
       output_row.push(value);
     }
     output.push(output_row);
@@ -44,7 +44,7 @@ export const generateOutput = (
 };
 
 export const checkButtonVisibility = (input: number[]) => {
-  for (var i = 0; i < input.length; i++) {
+  for (let i = 0; i < input.length; i++) {
     if (input[i] === SELECTED_COLOR.WHITE) {
       return false;
     }
@@ -54,7 +54,7 @@ export const checkButtonVisibility = (input: number[]) => {
 
 export const generateAnswer = (size: number) => {
   const answer: number[] = [];
-  for (var i = 0; i < size; i++) {
+  for (let i = 0; i < size; i++) {
     const no = Math.floor((Math.random() * 101) % constraints.NO_OF_COLORS);
     answer.push(no);
   }
