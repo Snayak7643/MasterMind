@@ -44,10 +44,12 @@ export const generateOutput = (
 };
 
 export const checkButtonVisibility = (input: number[]) => {
-  for (let i = 0; i < input.length; i++) {
-    if (input[i] === SELECTED_COLOR.WHITE) {
-      return false;
-    }
+  if (
+    input.findIndex((value: number) => {
+      return value === SELECTED_COLOR.WHITE;
+    }) !== -1
+  ) {
+    return false;
   }
   return true;
 };
