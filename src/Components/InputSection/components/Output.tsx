@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { GUESSES } from "../../../constants";
+import { GUESSES, MATCH } from "../../../constants";
 import GameContext from "../../../Contexts/gameContext";
 import { BsCircleFill, BsXCircle, BsCircle } from "react-icons/bs";
 
@@ -17,9 +17,9 @@ const Output: React.FunctionComponent<PropType> = ({ index }) => {
         {GUESSES.map((guessNo) => {
           return (
             <div key={guessNo} className="output-circle">
-              {output[guessNo] === 1 ? (
+              {output[guessNo] === MATCH.FULL ? (
                 <BsCircleFill />
-              ) : output[guessNo] === -1 ? (
+              ) : output[guessNo] === MATCH.NO ? (
                 <BsXCircle />
               ) : (
                 <BsCircle />

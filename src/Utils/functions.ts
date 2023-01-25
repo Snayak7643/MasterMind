@@ -1,4 +1,4 @@
-import { constraints } from "../constants";
+import { constraints, MATCH } from "../constants";
 
 export const generateN = (size: number, value: number) => {
   const array = Array(size).fill(value);
@@ -63,7 +63,7 @@ export const generateAnswer = (size: number) => {
 };
 
 export const getOutput = (input: number[], answer: number[]) => {
-  let output: number[] = generateN(input.length, -1);
+  let output: number[] = generateN(input.length, MATCH.NO);
   let i: number = 0;
   const answerMap = new Map();
   for (i = 0; i < answer.length; i++) {
@@ -78,14 +78,14 @@ export const getOutput = (input: number[], answer: number[]) => {
   input.forEach((colorIndex) => {
     if (answerMap.has(colorIndex) && answerMap.get(colorIndex) > 0) {
       answerMap.set(colorIndex, answerMap.get(colorIndex) - 1);
-      output[i] = 0;
+      output[i] = MATCH.PARTIAL;
       i++;
     }
   });
   i = 0;
   input.forEach((colorIndex, index) => {
     if (colorIndex === answer[index]) {
-      output[i] = 1;
+      output[i] = MATCH.FULL;
       i++;
     }
   });

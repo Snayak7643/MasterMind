@@ -20,6 +20,13 @@ export const COLORS = [
   "royalblue",
   "orangered",
 ];
+
+export enum MATCH {
+  NO = -1,
+  PARTIAL,
+  FULL,
+}
+
 export const GUESSES: number[] = generateOneToN(constraints.NO_OF_GUESSES);
 export const NO_OF_CHANCES: number[] = generateOneToN(
   constraints.NO_OF_CHANCES
@@ -34,7 +41,7 @@ export const INITIAL_STATE: StateType = {
   output: generateOutput(
     constraints.NO_OF_CHANCES,
     constraints.NO_OF_GUESSES,
-    0
+    MATCH.PARTIAL
   ),
   isWinner: false,
   isOver: false,
