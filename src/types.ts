@@ -1,12 +1,11 @@
 export type StateType = {
   selectedColor: number;
   activeIndex: number;
-  styles: { backgroundColor: string }[][];
   answer: number[];
   input: number[];
-  output: number[][];
   isWinner: boolean;
   isOver: boolean;
+  gameMatrix: { style: any[]; hint: number[] }[];
 };
 
 export type ActionType = {

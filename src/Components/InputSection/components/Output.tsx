@@ -9,7 +9,7 @@ type PropType = {
 
 const Output: React.FunctionComponent<PropType> = ({ index }) => {
   const { state } = useContext(GameContext);
-  const output = state.output[index];
+  const output = state.gameMatrix[index].hint;
 
   return (
     <div className="output">

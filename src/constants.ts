@@ -2,8 +2,7 @@ import { StateType } from "./types";
 import {
   fillArrayWithGivenValue,
   fillArrayFromZeroToN,
-  generateOutput,
-  generateStyles,
+  fillMatrixWithStyleAndHints,
 } from "./Utils/functions";
 
 export const constraints = {
@@ -47,19 +46,17 @@ export const NO_OF_CHANCES: number[] = fillArrayFromZeroToN(
 export const INITIAL_STATE: StateType = {
   selectedColor: SELECTED_COLOR.YELLOW,
   activeIndex: 0,
-  styles: generateStyles(constraints.NO_OF_CHANCES, constraints.NO_OF_GUESSES),
   input: fillArrayWithGivenValue(
     constraints.NO_OF_GUESSES,
     SELECTED_COLOR.WHITE
   ),
   answer: [],
-  output: generateOutput(
-    constraints.NO_OF_CHANCES,
-    constraints.NO_OF_GUESSES,
-    MATCH.PARTIAL
-  ),
   isWinner: false,
   isOver: false,
+  gameMatrix: fillMatrixWithStyleAndHints(
+    constraints.NO_OF_CHANCES,
+    constraints.NO_OF_GUESSES
+  ),
 };
 
 export const actionNames = {

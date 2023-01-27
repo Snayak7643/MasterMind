@@ -13,36 +13,6 @@ export const fillArrayFromZeroToN = (size: number) => {
   return array;
 };
 
-export const generateStyles = (rows: number, columns: number) => {
-  const styles: { backgroundColor: string }[][] = [];
-
-  for (let i = 0; i < rows; i++) {
-    const style: { backgroundColor: string }[] = [];
-    for (let j = 0; j < columns; j++) {
-      style.push({ backgroundColor: COLORS[SELECTED_COLOR.WHITE] });
-    }
-    styles.push(style);
-  }
-
-  return styles;
-};
-
-export const generateOutput = (
-  rows: number,
-  columns: number,
-  value: number
-) => {
-  const output: number[][] = [];
-  for (let i = 0; i < rows; i++) {
-    const output_row: number[] = [];
-    for (let j = 0; j < columns; j++) {
-      output_row.push(value);
-    }
-    output.push(output_row);
-  }
-  return output;
-};
-
 export const checkButtonVisibility = (input: number[]) => {
   if (
     input.findIndex((value: number) => {
@@ -112,4 +82,20 @@ export const checkWinnerOrOver = (output: number[], chance: number) => {
     isOver = true;
   }
   return { isWinner, isOver };
+};
+
+export const fillMatrixWithStyleAndHints = (rows: number, columns: number) => {
+  const matrix: { style: any[]; hint: number[] }[] = [];
+
+  for (let i = 0; i < rows; i++) {
+    const style: { backgroundColor: string }[] = [];
+    const hint: number[] = [];
+    for (let j = 0; j < columns; j++) {
+      style.push({ backgroundColor: COLORS[SELECTED_COLOR.WHITE] });
+      hint.push(MATCH.PARTIAL);
+    }
+    matrix.push({ style, hint });
+  }
+
+  return matrix;
 };

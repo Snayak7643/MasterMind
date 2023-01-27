@@ -9,7 +9,8 @@ import {
 
 const gameReducer = (state: StateType, action: ActionType) => {
   const { colorIndex, index } = action.payload;
-  const { activeIndex, styles, input, selectedColor, output } = state;
+  const { activeIndex, input, selectedColor } = state;
+
   switch (action.type) {
     case actionNames.NEW_GAME: {
       return {
@@ -26,31 +27,36 @@ const gameReducer = (state: StateType, action: ActionType) => {
     }
 
     case actionNames.SET_COLOR: {
-      let newStyles = cloneDeep(styles);
-      newStyles[activeIndex][index] = {
-        backgroundColor: COLORS[selectedColor],
-      };
       let newInput = [...input];
       newInput[index] = selectedColor;
+
+      let newGameMatrix = cloneDeep(state.gameMatrix);
+      newGameMatrix[activeIndex].style[index] = {
+        backgroundColor: COLORS[selectedColor],
+      };
+
       return {
         ...state,
-        styles: newStyles,
         input: newInput,
+        gameMatrix: newGameMatrix,
       };
     }
 
     case actionNames.SUBMIT: {
-      const newOutput = cloneDeep(output);
-      newOutput[activeIndex] = matchGuessWithAnswer(input, state.answer);
+      const newGameMatrix = cloneDeep(state.gameMatrix);
+      newGameMatrix[activeIndex].hint = matchGuessWithAnswer(
+        input,
+        state.answer
+      );
       const { isWinner, isOver } = checkWinnerOrOver(
-        newOutput[activeIndex],
+        newGameMatrix[activeIndex].hint,
         activeIndex
       );
       return {
         ...state,
         activeIndex: activeIndex + 1,
         input: INITIAL_STATE.input,
-        output: newOutput,
+        gameMatrix: newGameMatrix,
         isWinner,
         isOver,
       };

@@ -25,7 +25,7 @@ const InputSection: React.FunctionComponent<PropType> = ({ index }) => {
         return (
           <ColorCirle
             key={guessNo}
-            style={state.styles[index][guessNo]}
+            style={state.gameMatrix[index].style[guessNo]}
             handleClick={() => dispatch(setColor(guessNo))}
             isActive={state.activeIndex === index}
           />
